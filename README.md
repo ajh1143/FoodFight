@@ -1,6 +1,6 @@
 # FoodFight
 
-### Hunger is a powerful augmentation to mood
+### Feel the hunger
 
 FoodFight is a program that models the human reaction to the pangs of hunger, with the unique preferences and reactions we all posess. 
 
