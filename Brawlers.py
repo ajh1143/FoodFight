@@ -1,7 +1,7 @@
-class CheeseBurgerSnob(object):
+class Snob(object):
     def __init__(self, hunger_level, preference, eat_action, anger_action, fav_food):
         self.hunger_level = hunger_level
-        self.preference = preference
+        self.fav_topping = preference
         self.eat_action = eat_action
         self.anger_action = anger_action
         self.fav_food = fav_food
@@ -18,11 +18,11 @@ class CheeseBurgerSnob(object):
 
     def fight_flight(self, food):
         # present burger, get reaction
-        if food.food_type == self.fav_food and self.preference == food.getCheeseType():
-            print("Yum! {} {} are my favorite!".format(self.preference, self.fav_food))
+        if food.food_type == self.fav_food and self.fav_topping == food.getCheeseType():
+            print("Yum! {} {} are my favorite!".format(self.fav_topping, self.fav_food))
             self.eat_burger()
         else:
-            print("I only like CHEESEburgers!")
+            print("I only like {} {}!".format(self.fav_topping, self.fav_food))
             self.attack()
 
 
