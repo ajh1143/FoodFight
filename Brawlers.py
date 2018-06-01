@@ -19,10 +19,10 @@ class Snob(object):
     def fight_flight(self, food):
         # present burger, get reaction
         if food.food_type == self.fav_food and self.fav_topping == food.getCheeseType():
-            print("Yum! {} {}'s are my favorite!".format(self.fav_topping, self.fav_food))
+            print("Yum! {} {}s are my favorite!".format(self.fav_topping, self.fav_food))
             self.eat_burger()
         else:
-            print("I only like {} {}!".format(self.fav_topping, self.fav_food))
+            print("I only like {} {}s!".format(self.fav_topping, self.fav_food))
             self.attack()
 
 
@@ -36,3 +36,4 @@ class Snob(object):
 
     def attack(self):
         print(self.anger_action)
+        self.hunger_level+=1
