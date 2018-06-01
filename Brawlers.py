@@ -35,6 +35,6 @@ class Snob(object):
 
 
     def attack(self, food):
-        print("{} grabbed the {} and violently {} it".format(self.name, food, self.anger_action))
+        print("{} grabbed the {} and violently proceeded to violently {} it".format(self.name, food, self.anger_action))
         self.set_hunger(int(self.get_hunger()) + 1)
         print("{}'s hunger level has risen to {}!".format(self.name, self.get_hunger()))
