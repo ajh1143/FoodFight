@@ -1,6 +1,4 @@
 class BasicBurger():
-
-
     def __init__(self, patties=1, bun=True):
         self.patties = patties
         self.bun = bun
@@ -11,8 +9,6 @@ class BasicBurger():
 
 
 class Cheeseburger(BasicBurger):
-
-
     def __init__(self, cheesetype ="Cheddar", cheesecount=1, patties = 1):
         self.cheesetype = cheesetype
         self.cheesecount = cheesecount
@@ -24,7 +20,7 @@ class Cheeseburger(BasicBurger):
                                                                                              self.cheesecount,
                                                                                              self.cheesetype)
 
-
+    
     def setMeatPatties(self, newPatties):
         self.patties = newPatties
 
@@ -47,6 +43,7 @@ class Cheeseburger(BasicBurger):
         self.cheesecount = slices
         return self.cheesecount
 
+    
     def getCheeseSlices(self):
       #  print("This cheeseburger has {} cheese slices".format(self.patties))
         return self.patties
