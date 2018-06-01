@@ -28,9 +28,10 @@ class Snob(object):
 
     def eat_burger(self):
         #record stats
-        #delete burger (stack/queue)
-        #return glee
+        #delete burger (stack/queue?)
+        #reduce hunger
         print(self.eat_action)
+        self.set_hunger(self.get_hunger()-1)
 
 
     def attack(self):
