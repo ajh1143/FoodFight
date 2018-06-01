@@ -2,7 +2,7 @@ class BasicBurger():
     def __init__(self, patties=1, bun=True):
         self.patties = patties
         self.bun = bun
-
+        self.food_type = "Basic Burger"
 
     def __str__(self):
         return "A basic burger has: {} Meat patties, and a bun.".format(self.patties)
