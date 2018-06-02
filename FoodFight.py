@@ -1,3 +1,4 @@
+import random
 class BasicBurger():
 
 
@@ -46,7 +47,6 @@ class Cheeseburger(BasicBurger):
         return self.patties
 
 
-import random
 class BrawlerGenerator(object):
 
 
