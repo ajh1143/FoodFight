@@ -7,6 +7,7 @@ class Snob(object):
         self.fav_food = fav_food
         self.name = name
 
+
     def get_hunger(self):
         return self.hunger_level
 
@@ -15,26 +16,26 @@ class Snob(object):
         self.hunger_level = level
 
 
-    def fight_flight(self, food):
+    def fight_flight(self, *food):
         # present burger, get reaction
-        if food.food_type == self.fav_food and self.fav_topping == food.getCheeseType():
+        if food[0] is self.fav_food and food[1] is self.fav_topping:
             print("Yum! {} {}s are my favorite!".format(self.fav_topping, self.fav_food))
-            self.eat(food.food_type)
+            self.eat(food[0], food[1])
         else:
             print("I only like {} {}s!".format(self.fav_topping, self.fav_food))
-            self.attack(food.food_type)
+            self.attack(food[0], food[1])
 
 
-    def eat(self, food):
+    def eat(self, foodtype, topping):
         #record stats
         #delete burger (stack/queue?)
         #reduce hunger
-        print("{} grabbed the {} and proceeded to {}".format(self.name, food, self.eat_action))
+        print("{} grabbed the {} {} and proceeded to {} it".format(self.name, topping, foodtype,  self.eat_action))
         self.set_hunger(int(self.get_hunger())-1)
         print("{}'s hunger level has decreased to {}!".format(self.name, self.get_hunger()))
 
 
-    def attack(self, food):
-        print("{} grabbed the {} and proceeded to violently {} it".format(self.name, food, self.anger_action))
+    def attack(self, foodtype, topping):
+        print("{} grabbed the {} {} and proceeded to violently {} it".format(self.name, topping, foodtype, self.anger_action))
         self.set_hunger(int(self.get_hunger()) + 1)
         print("{}'s hunger level has risen to {}!".format(self.name, self.get_hunger()))
