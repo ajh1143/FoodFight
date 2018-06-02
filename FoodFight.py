@@ -1,4 +1,5 @@
 import random
+
 class BasicBurger():
 
 
@@ -47,6 +48,7 @@ class Cheeseburger(BasicBurger):
         return self.patties
 
 
+
 class BrawlerGenerator(object):
 
 
@@ -61,7 +63,7 @@ class BrawlerGenerator(object):
 
 
     def eatActionGenerator(self):
-        actions = ['Gorge', 'Devour', 'Ingest']
+        actions = ['gorge', 'devour', 'ingest']
         return random.choice(actions)
 
 
@@ -124,7 +126,7 @@ class Snob(object):
     def fight_flight(self, *food):
         # present burger, get reaction
         if food[0] is self.fav_food and food[1] is self.fav_topping:
-            print("Yum! {} {}s are my favorite!".format(self.fav_topping, self.fav_food))
+            print("{} said: \"Yum! {} {}s are my favorite!\"".format(self.name, self.fav_topping, self.fav_food))
             self.eat(food[0], food[1])
         else:
             print("{} said: \"I only like {} {}s\"!".format(self.name, self.fav_topping, self.fav_food))
