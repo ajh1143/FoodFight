@@ -40,3 +40,4 @@ class BrawlerGenerator(object):
         atts = [hunger, topping, eatAction, angerAction, favFood, name]
         Brawler = Snob(*atts)
         return Brawler
+
