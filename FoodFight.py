@@ -86,13 +86,14 @@ class BrawlerGenerator(object):
         return full_name
 
     def generateBrawler(self):
-        hunger = self.hungerGenerator()
-        topping = self.toppingGenerator()
-        eatAction = self.eatActionGenerator()
-        angerAction = self.angerActionGenerator()
-        favFood = self.favFoodGenerator()
-        name = self.nameGenerator()
-        atts = [hunger, topping, eatAction, angerAction, favFood, name]
+        run = BrawlerGenerator()
+        self.hunger = run.hungerGenerator()
+        self.topping = run.toppingGenerator()
+        self.eatAction = run.eatActionGenerator()
+        self.angerAction = run.angerActionGenerator()
+        self.favFood = run.favFoodGenerator()
+        self.name = run.nameGenerator()
+        atts = [self.hunger, self.topping, self.eatAction, self.angerAction, self.favFood, self.name]
         Brawler = Snob(*atts)
         return Brawler
 
