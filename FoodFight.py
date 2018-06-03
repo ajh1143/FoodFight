@@ -1,6 +1,9 @@
 import random
 import string
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 
+plt.style.use('bmh')
 class BasicBurger():
 
 
@@ -87,14 +90,16 @@ class BrawlerGenerator(object):
 
     def generateBrawler(self):
         run = BrawlerGenerator()
-        self.hunger = run.hungerGenerator()
-        self.topping = run.toppingGenerator()
-        self.eatAction = run.eatActionGenerator()
-        self.angerAction = run.angerActionGenerator()
-        self.favFood = run.favFoodGenerator()
-        self.name = run.nameGenerator()
-        atts = [self.hunger, self.topping, self.eatAction, self.angerAction, self.favFood, self.name]
-        Brawler = Snob(*atts)
+        hunger = run.hungerGenerator()
+        topping = run.toppingGenerator()
+        eatAction = run.eatActionGenerator()
+        angerAction = run.angerActionGenerator()
+        favFood = run.favFoodGenerator()
+        name = run.nameGenerator()
+        wins = 0
+        losses = 0
+        atts = [hunger, topping, eatAction, angerAction, favFood, name, wins, losses]
+        Brawler = Eater(*atts)
         return Brawler
 
 
@@ -109,14 +114,16 @@ class FoodGenerator(object):
         return food
 
 
-class Snob(object):
-    def __init__(self, hunger_level, preference, eat_action, anger_action, fav_food, name):
+class Eater(object):
+    def __init__(self, hunger_level, preference, eat_action, anger_action, fav_food, name, wins, losses):
         self.hunger_level = hunger_level
         self.fav_topping = preference
         self.eat_action = eat_action
         self.anger_action = anger_action
         self.fav_food = fav_food
         self.name = name
+        self.wins = wins
+        self.losses = losses
 
 
     def get_hunger(self):
@@ -136,7 +143,6 @@ class Snob(object):
             print("{} said: \"I only like {} {}s\"!".format(self.name, self.fav_topping, self.fav_food))
             self.attack(food[0], food[1])
 
-
     def eat(self, foodtype, topping):
         #record stats
         #delete burger (stack/queue?)
@@ -149,10 +155,42 @@ class Snob(object):
     def attack(self, foodtype, topping):
         print("{} grabbed the {} {} and proceeded to violently {} it".format(self.name, topping, foodtype,
                                                                                        self.anger_action))
-
         self.set_hunger(int(self.get_hunger()) + 1)
         print("{}'s hunger level has risen to {}!\n".format(self.name, self.get_hunger()))
 
+
+    def addWins(self):
+        self.wins+=1
+
+
+class BattleArena():
+
+    def matchUp(self, b1, b2):
+        if b1.get_hunger() > b2.get_hunger():
+            print("{} defeated {}!".format(b1.name, b2.name))
+            b1.addWins()
+        elif b1.get_hunger() == b2.get_hunger():
+            print("Neither food warrior was vanquished")
+        else:
+            print("{} defeated {}!".format(b2.name, b1.name))
+            b2.addWins()
+
+
+class BattleReports():
+
+    def CompareWins(self, eater1, eater2):
+        data = {eater1.name:eater1.wins, eater2.name:eater2.wins}
+        names = list(data.keys())
+        values = list(data.values())
+        fig, ax = plt.subplots()
+        ax.yaxis.set_major_locator(ticker.MaxNLocator(integer=True))
+        plt.bar(range(len(data)), values, tick_label=names)
+        plt.title('Total Wins')
+        plt.xlabel('Challengers')
+        plt.ylabel('Wins \n(Count)')
+        plt.show()
+        
+        
 if __name__ == "__main__":
 
     Brawler = BrawlerGenerator()
