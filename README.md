@@ -16,7 +16,7 @@ import random
 import string
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
-
+```
 plt.style.use('bmh')
 ## Basic Burger Class
 ```Python
